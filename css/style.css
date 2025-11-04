@@ -111,6 +111,10 @@ h2 {
     display: flex;
     flex-direction: column;
 }
+.menu-bolos {
+    font-size: 1.1rem; /* ou maior, como 1.2rem */
+    font-weight: bold;
+}
 
 
 
