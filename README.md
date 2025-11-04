@@ -6,7 +6,7 @@
 
 ## 🧁 Sobre o projeto
 
-Este site foi criado com o objetivo de oferecer uma vitrine digital elegante, funcional e acolhedora para a marca Clara Baunilha.  
+Este site foi criado com o objetivo de oferecer uma vitrine digital elegante, funcional e acolhedora para a marca Clara Baunilha. Criado para uma amiga, com muito empenho.
 A proposta é transmitir os valores da confeitaria como leveza, feminilidade, carinho e sabor por meio de uma experiência visual delicada e intuitiva.
 
 ---
@@ -22,8 +22,8 @@ A proposta é transmitir os valores da confeitaria como leveza, feminilidade, ca
 
 ## 🔐 Acesso e manutenção
 
-Este repositório é privado e mantido exclusivamente por **Paulo Fukahori**, responsável pelo desenvolvimento e atualizações técnicas do site.  
-O código-fonte não está disponível para acesso público ou contribuições externas.
+Este repositório foi feito exclusivamente por **Paulo Fukahori**, responsável pelo desenvolvimento e atualizações técnicas do site.  
+O código-fonte está disponível para acesso público, para contribuições futuras entrar em contato.
 
 ---
 
