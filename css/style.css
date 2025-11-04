@@ -1,0 +1,597 @@
+/* Paleta de Cores: */
+:root {
+    --rosa-claro: #FADDE1; /* Tom de rosa suave */
+    --baunilha: #FFF8E1; /* Amarelo pálido / Creme */
+    --branco: #FFFFFF;
+    --dourado-suave: #9d5e24; /* Dourado/Bege para detalhes */
+    --marrom-escuro: #6D4C41; /* Texto principal e detalhes */
+    --cinza-texto: #555555;
+}
+
+/* Base e Tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--marrom-escuro);
+    background-color: var(--baunilha);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 3rem;
+    color: var(--dourado-suave);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.section-padding {
+    padding: 4rem 1rem;
+}
+
+/* --- 1. Header Fixo --- */
+#header {
+    background-color: var(--branco);
+    border-bottom: 3px solid var(--rosa-claro);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    color: var(--dourado-suave);
+    line-height: 1;
+}
+
+.slogan {
+    font-size: 0.8rem;
+    color: var(--cinza-texto);
+    margin-top: 0.2rem;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: var(--marrom-escuro);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 20px;
+}
+
+.nav-list li a:hover {
+    color: var(--branco);
+    background-color: var(--rosa-claro);
+}
+
+.menu-toggle {
+    display: none; /* Esconder em desktop */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--dourado-suave);
+    cursor: pointer;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo-img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* --- 2. Seção de Introdução (Hero) --- */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 100px;
+  overflow: hidden;
+}
+
+.hero-img-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3; /* ajuste a opacidade aqui */
+  filter: brightness(1.1); /* opcional: clareia ou escurece */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+.hero-content h1 {
+    font-size: 5rem;
+    color: var(--dourado-suave);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--rosa-claro);
+    color: var(--marrom-escuro);
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background-color: var(--dourado-suave);
+    color: var(--branco);
+    transform: translateY(-3px);
+}
+
+
+/* --- 3. Sobre a Clara Baunilha --- */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+
+.baunilha-icon {
+    font-size: 2rem;
+    color: var(--rosa-claro);
+    margin-top: 1rem;
+}
+
+/* --- 4. Planos Doces --- */
+.background-vanilla {
+    background-color: var(--baunilha);
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    background-color: var(--branco);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.plan-icon {
+    font-size: 2.5rem;
+    color: var(--dourado-suave);
+    margin-bottom: 1rem;
+}
+
+.plan-card h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    color: var(--marrom-escuro);
+    margin-bottom: 0.5rem;
+}
+
+.plan-card .price {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--rosa-claro);
+    margin-bottom: 1rem;
+}
+
+.plan-card ul {
+    list-style: none;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.plan-card ul li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.plan-card ul li .fa-check-circle {
+    color: var(--rosa-claro);
+    margin-right: 0.5rem;
+}
+
+.highlight {
+    background-color: var(--rosa-claro);
+    color: var(--marrom-escuro);
+    transform: scale(1.05); /* Destaca o card */
+    border: 3px solid var(--dourado-suave);
+}
+.highlight .plan-icon {
+    color: var(--marrom-escuro);
+}
+.highlight .price {
+    color: var(--marrom-escuro);
+}
+.highlight ul li .fa-check-circle {
+    color: var(--marrom-escuro);
+}
+
+/* --- Hover universal para todos os cards --- */
+.plan-card:hover,
+.product-card:hover,
+.flip-card:hover {
+    background-color: var(--rosa-claro);
+    color: var(--marrom-escuro);
+    transform: scale(1.05);
+    border: 3px solid var(--dourado-suave);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.plan-card:hover .plan-icon,
+.product-card:hover .icon-pink {
+    color: var(--marrom-escuro);
+}
+
+.plan-card:hover .price,
+.product-card:hover .price {
+    color: var(--marrom-escuro);
+}
+
+.plan-card:hover ul li .fa-check-circle {
+    color: var(--marrom-escuro);
+}
+
+
+/* --- 5. Produtos e Preços --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background-color: var(--branco);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--rosa-claro);
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.product-card:hover {
+    border-color: var(--dourado-suave);
+    transform: scale(1.02);
+}
+
+.product-card h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.icon-pink {
+    color: var(--rosa-claro);
+    margin-right: 0.5rem;
+}
+
+.product-card .price {
+    font-weight: bold;
+    color: var(--dourado-suave);
+    margin-bottom: 0.5rem;
+}
+
+.product-card .flavors {
+    font-size: 0.9rem;
+    color: var(--cinza-texto);
+}
+
+/* --- 6. Galeria de Doces (Cards Giratórios) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    perspective: 1000px; /* Para o efeito 3D */
+}
+
+.flip-card {
+    background-color: transparent;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+/* Adiciona a classe 'flipped' via JS para virar */
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Oculta o verso quando não está virado */
+    backface-visibility: hidden;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.flip-card-front {
+    background-color: var(--branco);
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.flip-card-back {
+    background-color: var(--rosa-claro);
+    color: var(--marrom-escuro);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card-back h4 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--marrom-escuro);
+}
+.flip-card-back p {
+    padding: 0 1rem;
+}
+
+/* --- Botão Flutuante de WhatsApp --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366;
+    color: var(--branco);
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* --- 7. Rodapé --- */
+footer {
+    background-color: var(--marrom-escuro);
+    color: var(--baunilha);
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content > div {
+    padding: 1rem;
+    max-width: 300px;
+}
+
+.footer-content h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--dourado-suave);
+    padding-bottom: 0.5rem;
+}
+
+.social-media a {
+    color: var(--baunilha);
+    margin: 0 0.5rem;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: var(--rosa-claro);
+}
+
+.inspiration .quote {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.7rem;
+    color: white;
+}
+
+.copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    font-size: 0.8rem;
+}
+
+/* --- Responsividade (Media Queries) --- */
+
+/* Mobile (Até 768px) */
+@media (max-width: 768px) {
+    
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    /* Header e Menu Mobile */
+    #header {
+        padding: 1rem 5%;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-list {
+        display: none; /* Esconde o menu por padrão no mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--branco);
+        border-top: 1px solid var(--rosa-claro);
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-list.active {
+        display: flex; /* Mostra quando ativo */
+    }
+
+    .nav-list li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--baunilha);
+    }
+
+    .nav-list li a {
+        display: block;
+        padding: 0.8rem;
+        border-radius: 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o ícone de menu */
+    }
+
+    .logo-img {
+        height: 100px;
+        width: auto;
+        object-fit: contain;
+    }
+
+
+    /* Rodapé */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-content > div {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+}
+
+/* Tablet (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+
+    .plans-grid, .products-grid, .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .highlight {
+        grid-column: span 2; /* Ocupa duas colunas para destaque */
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+
