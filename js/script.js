@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     // 1. Lógica do Menu Mobile
     const menuToggle = document.querySelector('.menu-toggle');
     const navList = document.querySelector('.nav-list');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Fecha o menu ao clicar em um link
     document.querySelectorAll('.nav-list a').forEach(link => {
         link.addEventListener('click', () => {
             if (navList.classList.contains('active')) {
@@ -25,27 +27,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Lógica de Virar o Card da Galeria
-    const flipCards = document.querySelectorAll('.flip-card-inner');
+    // =========================================================
+    // 2. Lógica de Virar o Card da Galeria (FINAL CORRIGIDA)
+    // =========================================================
+    const flipCardsInner = document.querySelectorAll('.flip-card-inner');
+    const isDesktop = window.matchMedia("(min-width: 769px)");
 
-    flipCards.forEach(card => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('flipped');
-        });
+    flipCardsInner.forEach(cardInner => {
+        
+        // Funções nomeadas para que possam ser adicionadas e removidas
+        const handleMouseEnter = () => cardInner.classList.add('flipped');
+        const handleMouseLeave = () => setTimeout(() => cardInner.classList.remove('flipped'), 300);
+        const handleClick = () => cardInner.classList.toggle('flipped');
 
-        if (window.innerWidth > 768) {
-            card.parentElement.addEventListener('mouseenter', () => {
-                card.classList.add('flipped');
-            });
-            card.parentElement.addEventListener('mouseleave', () => {
-                setTimeout(() => {
-                    card.classList.remove('flipped');
-                }, 300);
-            });
-        }
+        const toggleFlipEvents = (mediaQuery) => {
+            const flipCardParent = cardInner.closest('.flip-card'); 
+
+            // Limpa todos os listeners existentes
+            cardInner.removeEventListener('click', handleClick);
+            flipCardParent.removeEventListener('mouseenter', handleMouseEnter);
+            flipCardParent.removeEventListener('mouseleave', handleMouseLeave);
+
+            if (mediaQuery.matches) {
+                // MODO DESKTOP: HOVER (usando JS e CSS)
+                
+                // Anexa o HOVER
+                flipCardParent.addEventListener('mouseenter', handleMouseEnter);
+                flipCardParent.addEventListener('mouseleave', handleMouseLeave);
+                
+            } else {
+                // MODO MOBILE: APENAS CLICK
+                
+                // Anexa o CLICK
+                cardInner.addEventListener('click', handleClick);
+            }
+        };
+
+        // Roda a verificação inicial
+        toggleFlipEvents(isDesktop);
+        
+        // Anexa um listener para reconfigurar os eventos se a tela mudar de tamanho
+        isDesktop.addListener(toggleFlipEvents); 
     });
 
-    // 3. Animações de Entrada
+
+    // 3. Animações de Entrada (Sem Alterações)
     const animateElements = document.querySelectorAll('.animate__animated');
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -53,10 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 const element = entry.target;
                 const animationClass = element.classList.contains('section-title') ? 'animate__fadeInUp' :
-                                       element.classList.contains('plan-card') ? 'animate__fadeInUp' :
-                                       element.classList.contains('product-card') ? 'animate__fadeInUp' :
-                                       element.classList.contains('flip-card') ? 'animate__fadeInUp' :
-                                       'animate__fadeIn';
+                                             element.classList.contains('plan-card') ? 'animate__fadeInUp' :
+                                             element.classList.contains('product-card') ? 'animate__fadeInUp' :
+                                             element.classList.contains('flip-card') ? 'animate__fadeInUp' :
+                                             'animate__fadeIn';
 
                 const dataAnimate = element.getAttribute('data-animate');
                 const delay = dataAnimate ? (parseInt(dataAnimate) * 100) + 'ms' : '0ms';

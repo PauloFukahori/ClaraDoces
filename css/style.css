@@ -3,7 +3,7 @@
     --rosa-claro: #FADDE1; /* Tom de rosa suave */
     --baunilha: #FFF8E1; /* Amarelo pálido / Creme */
     --branco: #FFFFFF;
-    --dourado-suave: #9d5e24; /* Dourado/Bege para detalhes */
+    --dourado-suave: #9d5e24; /* Dourado/Beige para detalhes */
     --marrom-escuro: #6D4C41; /* Texto principal e detalhes */
     --cinza-texto: #555555;
 }
@@ -15,11 +15,31 @@
     box-sizing: border-box;
 }
 
+/* 🚀 CORREÇÃO 1/2: SCROLL SUAVE */
+html {
+    scroll-behavior: smooth; 
+}
+
+/* 🚀 CORREÇÃO 2/2: CORREÇÃO DE ANCORAGEM (HEADER FIXO) */
+/* Garante que o header fixo não cubra o topo da seção ao clicar no link interno */
+section[id], footer[id="contato"] {
+    scroll-margin-top: 120px; /* Ajuste para um valor maior que a altura do seu header */
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     color: var(--marrom-escuro);
     background-color: var(--baunilha);
     line-height: 1.6;
+    transition: margin-left 0.4s; 
+    
+    /* 🧁 CURSOR PERSONALIZADO (Desktop) - Ícone de Cupcake */
+    cursor: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewport='0 0 100 100' style='fill:black;font-size:30px;'><text y='100%' style='fill:%239d5e24;font-family:Arial, sans-serif;'>🧁</text></svg>") 20 20, auto;
+}
+
+/* Trava a rolagem do body quando o menu lateral estiver aberto (ativado pelo JS) */
+body.menu-open {
+    overflow: hidden;
 }
 
 h1, h2, h3 {
@@ -70,7 +90,7 @@ h2 {
 
 .nav-list {
     list-style: none;
-    display: flex;
+    display: flex; /* Padrão Desktop */
 }
 
 .nav-list li a {
@@ -111,17 +131,18 @@ h2 {
     display: flex;
     flex-direction: column;
 }
-.menu-bolos {
-    font-size: 1.1rem; /* ou maior, como 1.2rem */
-    font-weight: bold;
-}
 
+/* Esconde o botão de fechar em telas grandes */
+.close-menu {
+    display: none;
+}
 
 
 /* --- 2. Seção de Introdução (Hero) --- */
 .hero {
   position: relative;
-  height: 100vh;
+  /* DESKTOP: Altura padrão de tela cheia */
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,15 +164,14 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3; /* ajuste a opacidade aqui */
-  filter: brightness(1.1); /* opcional: clareia ou escurece */
+  opacity: 0.3;
+  filter: brightness(1.1);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
 }
-
 
 .hero-content h1 {
     font-size: 5rem;
@@ -204,114 +224,21 @@ h2 {
     margin-top: 1rem;
 }
 
-/* --- 4. Planos Doces --- */
-.background-vanilla {
-    background-color: var(--baunilha);
-}
-
-.plans-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.plan-card {
-    background-color: var(--branco);
-    padding: 2rem;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.plan-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.plan-icon {
-    font-size: 2.5rem;
-    color: var(--dourado-suave);
-    margin-bottom: 1rem;
-}
-
-.plan-card h3 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.5rem;
-    color: var(--marrom-escuro);
-    margin-bottom: 0.5rem;
-}
-
-.plan-card .price {
-    font-weight: bold;
-    font-size: 1.8rem;
-    color: var(--rosa-claro);
-    margin-bottom: 1rem;
-}
-
-.plan-card ul {
-    list-style: none;
-    text-align: left;
-    margin-top: 1rem;
-}
-
-.plan-card ul li {
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-}
-
-.plan-card ul li .fa-check-circle {
-    color: var(--rosa-claro);
-    margin-right: 0.5rem;
-}
-
-.highlight {
-    background-color: var(--rosa-claro);
-    color: var(--marrom-escuro);
-    transform: scale(1.05); /* Destaca o card */
-    border: 3px solid var(--dourado-suave);
-}
-.highlight .plan-icon {
-    color: var(--marrom-escuro);
-}
-.highlight .price {
-    color: var(--marrom-escuro);
-}
-.highlight ul li .fa-check-circle {
-    color: var(--marrom-escuro);
-}
-
 /* --- Hover universal para todos os cards --- */
 .plan-card:hover,
 .product-card:hover,
 .flip-card:hover {
     background-color: var(--rosa-claro);
     color: var(--marrom-escuro);
-    transform: scale(1.05);
+    transform: scale(1.02);
     border: 3px solid var(--dourado-suave);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.plan-card:hover .plan-icon,
-.product-card:hover .icon-pink {
-    color: var(--marrom-escuro);
-}
-
-.plan-card:hover .price,
-.product-card:hover .price {
-    color: var(--marrom-escuro);
-}
-
-.plan-card:hover ul li .fa-check-circle {
-    color: var(--marrom-escuro);
-}
-
-
 /* --- 5. Produtos e Preços --- */
 .products-grid {
     display: grid;
+    /* Padrão desktop: 2 colunas */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     max-width: 1200px;
@@ -325,11 +252,35 @@ h2 {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     border-left: 5px solid var(--rosa-claro);
     transition: border-color 0.3s, transform 0.3s;
+    
+    overflow: hidden; 
+    
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    
+    min-width: 0;
 }
 
-.product-card:hover {
-    border-color: var(--dourado-suave);
-    transform: scale(1.02);
+/* Correção de Imagem (Aspect Ratio) */
+.product-card .image-wrapper {
+    margin: -1.5rem -1.5rem 1rem -1.5rem; 
+    
+    position: relative;
+    /* PROPORÇÃO 4:3 (75%) */
+    padding-top: 75%; 
+    overflow: hidden;
+}
+
+.product-card .image-wrapper img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    display: block;
+    object-fit: cover; 
 }
 
 .product-card h3 {
@@ -348,11 +299,8 @@ h2 {
     font-weight: bold;
     color: var(--dourado-suave);
     margin-bottom: 0.5rem;
-}
-
-.product-card .flavors {
-    font-size: 0.9rem;
-    color: var(--cinza-texto);
+    
+    margin-top: auto; 
 }
 
 /* --- 6. Galeria de Doces (Cards Giratórios) --- */
@@ -367,22 +315,25 @@ h2 {
 
 .flip-card {
     background-color: transparent;
-    height: 300px;
+    /* DESKTOP: Altura fixa para simetria */
+    height: 300px; 
     border-radius: 15px;
 }
 
 .flip-card-inner {
     position: relative;
     width: 100%;
-    height: 100%;
+    /* DESKTOP: Altura 100% do pai (300px) */
+    height: 100%; 
     text-align: center;
-    transition: transform 0.6s;
+    /* 🚀 CORREÇÃO DE VELOCIDADE: 1.2 segundos */
+    transition: transform 1.2s; 
     transform-style: preserve-3d;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
 }
 
-/* Adiciona a classe 'flipped' via JS para virar */
+/* Adiciona a classe 'flipped' via JS para virar (Usado no Mobile) */
 .flip-card-inner.flipped {
     transform: rotateY(180deg);
 }
@@ -390,8 +341,9 @@ h2 {
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Oculta o verso quando não está virado */
+    /* DESKTOP: Altura 100% do pai (300px) */
+    height: 100%; 
+    -webkit-backface-visibility: hidden; 
     backface-visibility: hidden;
     border-radius: 15px;
     padding: 1rem;
@@ -428,6 +380,15 @@ h2 {
     padding: 0 1rem;
 }
 
+
+/* 🏆 REGRA CRÍTICA ADICIONADA: HOVER DESKTOP VIA CSS */
+@media (min-width: 769px) {
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+
 /* --- Botão Flutuante de WhatsApp --- */
 .whatsapp-float {
     position: fixed;
@@ -456,7 +417,9 @@ h2 {
 footer {
     background-color: var(--marrom-escuro);
     color: var(--baunilha);
-    padding-top: 3rem;
+    /* AJUSTE: Reduzindo o padding superior no desktop */
+    padding-top: 2rem; 
+    padding-bottom: 0; 
     text-align: center;
 }
 
@@ -464,13 +427,15 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding-bottom: 2rem;
+    /* AJUSTE: Reduzindo o padding inferior do conteúdo */
+    padding-bottom: 1rem; 
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .footer-content > div {
-    padding: 1rem;
+    /* AJUSTE: Reduzindo o padding interno das colunas */
+    padding: 0.8rem; 
     max-width: 300px;
 }
 
@@ -502,100 +467,236 @@ footer {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 1rem;
     font-size: 0.8rem;
+    /* AJUSTE: Garantindo que não tenha margem no final */
+    margin-bottom: 0; 
 }
 
 /* --- Responsividade (Media Queries) --- */
 
-/* Mobile (Até 768px) */
+/* Mobile First: até 768px */
 @media (max-width: 768px) {
+
+    /* 🖼️ AJUSTE FINAL NA ALTURA DA SEÇÃO HERO NO MOBILE */
+    .hero {
+        /* Otimiza para telas menores, mostrando o conteúdo abaixo */
+        height: 80vh; 
+    }
     
+    /* Otimização de Imagens e Texto */
+    .logo-img {
+        height: 10vw; 
+        min-height: 50px; 
+        max-height: 80px; 
+        width: auto;
+        object-fit: contain;
+    }
+    .logo-text {
+        font-size: 1.8rem; 
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
     .hero-content h1 {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+        line-height: 1.2;
+        text-align: center;
+        padding: 0 1rem;
+    }
+    .hero-content p {
+        font-size: 1rem; 
+    }
+    
+    /* 📱 Remove o cursor customizado no mobile para melhor usabilidade */
+    body {
+        cursor: default; 
     }
 
-    /* Header e Menu Mobile */
-    #header {
-        padding: 1rem 5%;
+    /* Cards com Rolagem Horizontal (Scroll Snap) */
+    .products-grid,
+    .gallery-grid {
+        display: flex; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; 
+        gap: 1.5rem; 
+        padding-bottom: 1.5rem; 
+        padding-left: 1rem; 
+        padding-right: 1rem; 
+        max-width: 100vw; 
+        margin-left: 0;
+        margin-right: 0;
+        -webkit-overflow-scrolling: touch; 
+        
+        /* Otimização de Scrollbar */
+        &::-webkit-scrollbar { height: 8px; }
+        &::-webkit-scrollbar-thumb { background-color: var(--rosa-claro); border-radius: 10px; }
+        &::-webkit-scrollbar-track { background: var(--baunilha); }
+        scrollbar-width: thin;
+        scrollbar-color: var(--rosa-claro) var(--baunilha);
     }
 
-    nav {
-        display: flex;
-        align-items: center;
+    /* Regras do Product Card (Doces e Bolos) */
+    .product-card {
+        flex: 0 0 85vw; 
+        scroll-snap-align: center; 
+        max-width: 400px; 
+        height: auto;
+        display: block;
+        min-width: 0;
+        padding: 1.5rem; 
+    }
+    
+    .product-card .image-wrapper {
+          margin: -1.5rem -1.5rem 0.8rem -1.5rem; 
+          padding-top: 75%; 
+    }
+
+    /* 🖼️ CORREÇÃO DE ALTURA DA GALERIA NO MOBILE (Flip Card) */
+    .flip-card {
+        flex: 0 0 85vw; 
+        scroll-snap-align: center; 
+        max-width: 400px; 
+        min-width: 0;
+        /* Usa padding-top para forçar a proporção (4:3) no container no mobile */
+        position: relative; 
+        padding-top: 64%; 
+        height: 0; 
+        border-radius: 15px; 
+        margin-bottom: 0.5rem;
+    }
+    
+    .flip-card-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+        transition: transform 1.2s; /* Mantém a transição lenta para o clique */
+    }
+    
+    .flip-card-front, .flip-card-back {
+        width: 100%;
+        height: 100%;
+        padding: 1rem; 
+    }
+    
+    .flip-card-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+    
+    /* MENU LATERAL (OFF-CANVAS) */
+    nav { position: relative; }
+    
+    .close-menu {
+        display: block; 
+        position: absolute;
+        top: 1rem; 
+        right: 1.5rem;
+        font-size: 1.8rem;
+        color: var(--dourado-suave);
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 2001; 
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        padding: 0;
+        line-height: 1;
+    }
+    .close-menu i { color: var(--marrom-escuro); }
+
+    .menu-toggle {
+        display: block; 
+        font-size: 1.8rem;
+        cursor: pointer;
     }
 
     .nav-list {
-        display: none; /* Esconde o menu por padrão no mobile */
+        display: flex; 
         flex-direction: column;
-        position: absolute;
-        top: 100%;
+        position: fixed; 
+        top: 0;
         left: 0;
-        width: 100%;
-        background-color: var(--branco);
-        border-top: 1px solid var(--rosa-claro);
-        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+        width: 80vw; 
+        height: 100vh;
+        background-color: var(--rosa-claro); 
+        border-right: 3px solid var(--dourado-suave);
+        z-index: 2000; 
+        padding: 2rem 1rem 1rem;
+        transform: translateX(-100%); 
+        transition: transform 0.4s ease-in-out; 
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        overflow-y: auto; 
     }
-
+    
     .nav-list.active {
-        display: flex; /* Mostra quando ativo */
+        transform: translateX(0); 
     }
-
+    
+    .nav-list li:first-child { border-bottom: none; padding: 0; }
+    
     .nav-list li {
         width: 100%;
-        text-align: center;
-        border-bottom: 1px solid var(--baunilha);
+        text-align: left; 
+        border-bottom: 1px solid var(--baunilha); 
     }
 
     .nav-list li a {
         display: block;
-        padding: 0.8rem;
-        border-radius: 0;
+        padding: 1rem;
+        font-size: 1.1rem;
+        width: 100%; 
     }
-
-    .menu-toggle {
-        display: block; /* Mostra o ícone de menu */
-    }
-
-    .logo-img {
-        height: 100px;
-        width: auto;
-        object-fit: contain;
-    }
-
 
     /* Rodapé */
+    footer {
+        /* AJUSTE: Definindo um padding menor para o footer no mobile */
+        padding-top: 2rem;
+        padding-bottom: 0; 
+    }
+    
     .footer-content {
         flex-direction: column;
         align-items: center;
-    }
-    .footer-content > div {
         text-align: center;
-        margin-bottom: 1rem;
+        /* AJUSTE: Reduzindo o gap entre os elementos do footer */
+        gap: 0.5rem;
+    }
+
+    .footer-content > div {
+         /* AJUSTE: Padding ainda menor no mobile */
+        padding: 0.5rem; 
+        max-width: 300px;
     }
 
     .whatsapp-float {
+        position: fixed;
         bottom: 20px;
         right: 20px;
-        width: 50px;
-        height: 50px;
-        font-size: 25px;
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+        z-index: 999;
     }
 }
 
-/* Tablet (769px a 1024px) */
+/* Tablets/Laptops Pequenos: 769px a 1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
     .hero-content h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
+        text-align: center;
     }
 
-    .plans-grid, .products-grid, .gallery-grid {
+    /* Cards voltam ao grid de 2 colunas */
+    .products-grid,
+    .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
-
-    .highlight {
-        grid-column: span 2; /* Ocupa duas colunas para destaque */
-        max-width: 500px;
-        margin: 0 auto;
+    
+    .product-card {
+        height: 100%;
     }
 }
-
-
