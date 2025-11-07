@@ -15,15 +15,14 @@
     box-sizing: border-box;
 }
 
-/* 🚀 CORREÇÃO 1/2: SCROLL SUAVE */
+/* 🚀 CORREÇÃO SCROLL: SCROLL SUAVE */
 html {
     scroll-behavior: smooth; 
 }
 
-/* 🚀 CORREÇÃO 2/2: CORREÇÃO DE ANCORAGEM (HEADER FIXO) */
-/* Garante que o header fixo não cubra o topo da seção ao clicar no link interno */
+/* 🚀 CORREÇÃO ANCORAGEM: Não deixa o header fixo cobrir o topo da seção */
 section[id], footer[id="contato"] {
-    scroll-margin-top: 120px; /* Ajuste para um valor maior que a altura do seu header */
+    scroll-margin-top: 120px; 
 }
 
 body {
@@ -33,8 +32,9 @@ body {
     line-height: 1.6;
     transition: margin-left 0.4s; 
     
-    /* 🧁 CURSOR PERSONALIZADO (Desktop) - Ícone de Cupcake */
-    cursor: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewport='0 0 100 100' style='fill:black;font-size:30px;'><text y='100%' style='fill:%239d5e24;font-family:Arial, sans-serif;'>🧁</text></svg>") 20 20, auto;
+    /* 🍫 NOVO CURSOR: Ícone de Brigadeiro/Chocolate */
+    cursor: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewport='0 0 100 100' style='fill:black;font-size:30px;'><text y='100%' style='fill:%236D4C41;font-family:Arial, sans-serif;'>🍫</text></svg>") 20 20, auto;
+    
 }
 
 /* Trava a rolagem do body quando o menu lateral estiver aberto (ativado pelo JS) */
@@ -238,8 +238,8 @@ h2 {
 /* --- 5. Produtos e Preços --- */
 .products-grid {
     display: grid;
-    /* Padrão desktop: 2 colunas */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Padrão desktop: 3 colunas para acomodar Doces, Bolos e Potes/Tortinhas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -417,33 +417,35 @@ h2 {
 footer {
     background-color: var(--marrom-escuro);
     color: var(--baunilha);
-    /* AJUSTE: Reduzindo o padding superior no desktop */
-    padding-top: 2rem; 
     padding-bottom: 0; 
     text-align: center;
 }
+
+footer.section-padding {
+    padding-top: 4rem; 
+    padding-bottom: 0; 
+}
+
 
 .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    /* AJUSTE: Reduzindo o padding inferior do conteúdo */
     padding-bottom: 1rem; 
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .footer-content > div {
-    /* AJUSTE: Reduzindo o padding interno das colunas */
     padding: 0.8rem; 
     max-width: 300px;
 }
 
 .footer-content h3 {
+    color: var(--baunilha); 
     font-family: 'Open Sans', sans-serif;
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid var(--dourado-suave);
     padding-bottom: 0.5rem;
 }
 
@@ -457,17 +459,22 @@ footer {
     color: var(--rosa-claro);
 }
 
+/* Corrigindo a cor do ícone "pink" dentro do footer para contraste */
+footer .icon-pink {
+    color: var(--rosa-claro);
+    margin-right: 0.5rem;
+}
+
 .inspiration .quote {
     font-family: 'Great Vibes', cursive;
     font-size: 1.7rem;
-    color: white;
+    color: var(--rosa-claro); /* Usando rosa claro para destaque */
 }
 
 .copyright {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 1rem;
     font-size: 0.8rem;
-    /* AJUSTE: Garantindo que não tenha margem no final */
     margin-bottom: 0; 
 }
 
@@ -476,13 +483,10 @@ footer {
 /* Mobile First: até 768px */
 @media (max-width: 768px) {
 
-    /* 🖼️ AJUSTE FINAL NA ALTURA DA SEÇÃO HERO NO MOBILE */
     .hero {
-        /* Otimiza para telas menores, mostrando o conteúdo abaixo */
         height: 80vh; 
     }
     
-    /* Otimização de Imagens e Texto */
     .logo-img {
         height: 10vw; 
         min-height: 50px; 
@@ -550,13 +554,12 @@ footer {
           padding-top: 75%; 
     }
 
-    /* 🖼️ CORREÇÃO DE ALTURA DA GALERIA NO MOBILE (Flip Card) */
+    /* CORREÇÃO DE ALTURA DA GALERIA NO MOBILE (Flip Card) */
     .flip-card {
         flex: 0 0 85vw; 
         scroll-snap-align: center; 
         max-width: 400px; 
         min-width: 0;
-        /* Usa padding-top para forçar a proporção (4:3) no container no mobile */
         position: relative; 
         padding-top: 64%; 
         height: 0; 
@@ -570,7 +573,7 @@ footer {
         left: 0;
         width: 100%;
         height: 100%; 
-        transition: transform 1.2s; /* Mantém a transição lenta para o clique */
+        transition: transform 1.2s; 
     }
     
     .flip-card-front, .flip-card-back {
@@ -652,7 +655,6 @@ footer {
 
     /* Rodapé */
     footer {
-        /* AJUSTE: Definindo um padding menor para o footer no mobile */
         padding-top: 2rem;
         padding-bottom: 0; 
     }
@@ -661,12 +663,10 @@ footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        /* AJUSTE: Reduzindo o gap entre os elementos do footer */
         gap: 0.5rem;
     }
 
     .footer-content > div {
-         /* AJUSTE: Padding ainda menor no mobile */
         padding: 0.5rem; 
         max-width: 300px;
     }
@@ -689,14 +689,27 @@ footer {
         text-align: center;
     }
 
-    /* Cards voltam ao grid de 2 colunas */
-    .products-grid,
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+    /* 🚀 AJUSTE PARA 3 COLUNAS EM TELAS MAIORES QUE MOBILE */
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 1rem; 
     }
     
     .product-card {
         height: 100%;
+    }
+    
+    /* Cards voltam ao grid de 2 colunas */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Laptops Grandes (Acima de 1025px) */
+@media (min-width: 1025px) {
+    /* Garante que em telas bem grandes use 3 colunas para a seção de bolos/tortas/potes */
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
